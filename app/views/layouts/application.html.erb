@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyBlog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> 
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="myBlog.css">
+
+    <style id="holderjs-style" type="text/css">
+    </style>
+
+    <!--bootstrap meta -->
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+
+<body>
+
+  <!-- header -->
+  <div class="blog-masthead">
+<div class="container">
+<nav class="blog-nav">
+<a class="blog-nav-item active" href="#">Home</a>
+<a class="blog-nav-item" href="#">Blog</a>
+<a class="blog-nav-item" href="#">My Posts</a>
+<a class="blog-nav-item" href="#">Support</a>
+<a class="blog-nav-item" href="#">About</a>
+<% if user_signed_in? %>
+  <ul class="profile" style = "text-align:right;">
+    Logged in as <strong><%= current_user.email %></strong>
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'blog-nav-item' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'blog-nav-item'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'blog-nav-item'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'blog-nav-item'  %>
+  </ul>
+<% end %>
+</div>
+</div>
+	
+	
+	<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>
