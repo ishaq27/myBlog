@@ -1,7 +1,14 @@
 
 <h1>Post your message</h1>
 
-<%form_for @myblog do |m|%>
-<%=m.text_area :message%>
-<%=m.submit%>
+<%= form_for @myblog, :url => '/myblogs' do |f|%>
+<%=f.text_area :message%>
+</br>
+<%=f.text_field :user_id%>
+</br>
+<%=f.text_field :user_type%>
+
+<%=f.submit value="Post Message"%>
+
+
 <%end%>
