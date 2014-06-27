@@ -1,3 +1,9 @@
 class Blog < ActiveRecord::Base
-  belongs_to :user, polymorphic: true
+
+validates :user_id, :presence => true
+validates :user_type, :presence => true
+
+
+  belongs_to :user
+  has_many :comments
 end

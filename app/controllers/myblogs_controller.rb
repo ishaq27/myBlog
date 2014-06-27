@@ -1,7 +1,6 @@
 class MyblogsController < ApplicationController
   def show
-    
-
+    @comments = Comment.all
   end
 
   def new
@@ -9,10 +8,10 @@ class MyblogsController < ApplicationController
   end
 
   def create
-    @myblog = Blog.new myblog_params
+    @myblog = Blog.new(myblog_params)
 
-    #puts 'xxxxxxxxxxxxx', params[:user_id].inspect
-   #mmmm
+    #puts 'xxxxxxxxxxxxx', myblog_params.inspect
+    #a
      respond_to do |format|
       if @myblog.save
 
@@ -31,12 +30,23 @@ class MyblogsController < ApplicationController
   def update
   end
 
+  def myposts
+    @myposts= Blog.where(user_id: current_user.id)   
+  end
+
   def destroy
   end
 
   def index
     @myblogs = Blog.all
+    @comments =Comment.all
   end
+
+  def comment
+   Blog.find(params[:id]).comments.create(params[:comment])
+   flash[:notice] = "Added your comment"
+   redirect_to :action => "show", :id => params[:id]
+end
 
   def myblog_params
     params.require(:blog).permit(:message, :user_type, :user_id)

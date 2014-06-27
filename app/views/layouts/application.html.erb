@@ -30,14 +30,16 @@
 
 
 <body>
+  <div id="wrapper" style="hight:600px;">
 
   <!-- header -->
   <div class="blog-masthead">
 <div class="container">
 <nav class="blog-nav">
-<a class="blog-nav-item active" href="#">Home</a>
-<a class="blog-nav-item" href="#">Blog</a>
-<a class="blog-nav-item" href="#">My Posts</a>
+<a class="blog-nav-item active" href="http://localhost:3000/home">Home</a>
+<a class="blog-nav-item" href="http://localhost:3000">Blog</a>
+<a class="blog-nav-item" href="http://localhost:3000/myblogs/new">Post Message</a>
+<a class="blog-nav-item" href="http://localhost:3000/myblogs/myposts">My Posts</a>
 <a class="blog-nav-item" href="#">Support</a>
 <a class="blog-nav-item" href="#">About</a>
 <% if user_signed_in? %>
@@ -76,6 +78,9 @@
 
 
 <%= yield %>
+
+
+  </div>
 
 
     <div class="blog-footer">

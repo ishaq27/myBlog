@@ -1,10 +1,40 @@
 <%@myblogs.each do |blog|%>    
             <h4>posted by: <%=blog.user_type%></h4>
 
-            <pre><code><%=blog.message%></code></pre>
+            <blockquote>
+              <%=blog.message%>
+            </blockquote>
 
-            <p class="blog-post-meta"><%=blog.created_at.to_s(:short)%> by <a href="#">Mark</a></p>
+
+            <p class="blog-post-meta"><%=blog.created_at.to_s(:short)%> by <a href="#"><%=blog.user_type%></a></p>
+
+
            <%end%>
+
+           <pre><code><%=current_user.email%></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <hr>
             <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
             <blockquote>

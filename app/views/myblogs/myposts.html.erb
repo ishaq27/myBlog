@@ -1,0 +1,11 @@
+<h4>Posts of <%=current_user.email%></h4>
+
+<% @myposts.each do |post|%>    
+
+            <blockquote>
+              <%=post.message%>
+              <pre>Created on: <%=post.created_at.to_s(:long)%></pre>
+            </blockquote>
+           <%end%>
+
+           <pre><code><%=current_user.email%></code></pre>

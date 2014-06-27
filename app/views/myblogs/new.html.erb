@@ -2,13 +2,18 @@
 <h1>Post your message</h1>
 
 <%= form_for @myblog, :url => '/myblogs' do |f|%>
-<%=f.text_area :message%>
+<%=f.text_area :message, :required => true%>
 </br>
-<%=f.text_field :user_id%>
-</br>
-<%=f.text_field :user_type%>
-
+<%=f.hidden_field :user_type, :value=>current_user.email%>
+<%=f.hidden_field :user_id, :value=>current_user.id%>
 <%=f.submit value="Post Message"%>
 
 
+
 <%end%>
+
+
+<script type="text/javascript">
+$("#blog_message").validate({});
+</script>
+

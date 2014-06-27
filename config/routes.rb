@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root :to => 'myblogs#index'
+  get 'myblogs/myposts'
   resources 'myblogs'
 
 #  get 'myblogs/show'
